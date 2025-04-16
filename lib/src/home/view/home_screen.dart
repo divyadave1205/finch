@@ -56,142 +56,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 20.h),
-                Header(),
-                SizedBox(height: 24.h),
-                Opacity(
-                  opacity: 0.3,
-                  child: Text(
-                    "WELCOME BACK,",
-                    style: TextStyle(
-                      color: AppColors.white,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ),
-                Text(
-                  Supabase.instance.client.auth.currentUser
-                          ?.userMetadata?['name'] ??
-                      "Donald John",
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Poppins',
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Opacity(
-                  opacity: 0.5,
-                  child: Text(
-                    "we have great things planned for you",
-                    style: TextStyle(
-                      color: AppColors.white,
-                      fontFamily: 'Poppins',
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20.h),
-                MembershipCard(),
-                SizedBox(height: 24.h),
-                BalanceCard(),
-                SizedBox(height: 25.h),
-                Row(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ScanCard(),
-                    Spacer(),
-                    Column(
-                      children: [
-                        AddMoneyButton(),
-                        SizedBox(height: 24.h),
-                        Row(
-                          children: [
-                            RoundButton(
-                              image: 'assets/images/svg/card.svg',
-                              name: 'card details',
-                            ),
-                            SizedBox(width: 15.w),
-                            RoundButton(
-                              image: 'assets/images/svg/menu.svg',
-                              name: 'view all',
-                            ),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(height: 20.h),
-                Divider(),
-                SizedBox(height: 60.h),
-                Opacity(
-                  opacity: 0.3,
-                  child: Text(
-                    "Membership Features ",
-                    style: TextStyle(
-                      color: AppColors.white,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  "yolo membership has a\nvariety of features for you",
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Poppins',
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Opacity(
-                  opacity: 0.5,
-                  child: Text(
-                    "Yolo memberships cost ₹499 a year for access to the premium features.",
-                    style: TextStyle(
-                      color: AppColors.white,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ),
-                SizedBox(height: 24.h),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      GinnieContainer(),
-                      SizedBox(width: 16.w),
-                      GiveAwayContainer(),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 40.h),
-                CustomGradientButton(
-                  onPressed: null,
-                  text: "explore more",
-                ),
-                SizedBox(height: 70.h),
-                Row(
-                  children: [
+                    SizedBox(height: 20.h),
+                    Header(),
+                    SizedBox(height: 24.h),
                     Opacity(
-                      opacity: 0.5,
+                      opacity: 0.3,
                       child: Text(
-                        "Recent Transactions",
+                        "WELCOME BACK,",
                         style: TextStyle(
                           color: AppColors.white,
                           fontSize: 12.sp,
@@ -200,57 +79,187 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    Spacer(),
                     Text(
-                      "view all",
+                      Supabase.instance.client.auth.currentUser
+                              ?.userMetadata?['name'] ??
+                          "Donald John",
                       style: TextStyle(
-                        color: AppColors.red,
-                        decoration: TextDecoration.underline,
-                        decorationColor: AppColors.red,
-                        fontSize: 14.sp,
+                        color: AppColors.white,
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                    SizedBox(height: 8.h),
+                    Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        "we have great things planned for you",
+                        style: TextStyle(
+                          color: AppColors.white,
+                          fontFamily: 'Poppins',
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    MembershipCard(),
+                    SizedBox(height: 24.h),
+                    BalanceCard(),
+                    SizedBox(height: 25.h),
+                    Row(
+                      children: [
+                        ScanCard(),
+                        Spacer(),
+                        Column(
+                          children: [
+                            AddMoneyButton(),
+                            SizedBox(height: 24.h),
+                            Row(
+                              children: [
+                                RoundButton(
+                                  image: 'assets/images/svg/card.svg',
+                                  name: 'card details',
+                                ),
+                                SizedBox(width: 15.w),
+                                RoundButton(
+                                  image: 'assets/images/svg/menu.svg',
+                                  name: 'view all',
+                                ),
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    Divider(),
+                    SizedBox(height: 60.h),
+                    Opacity(
+                      opacity: 0.3,
+                      child: Text(
+                        "Membership Features ",
+                        style: TextStyle(
+                          color: AppColors.white,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 8.h),
+                    Text(
+                      "yolo membership has a\nvariety of features for you",
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Poppins',
                       ),
                     ),
+                    SizedBox(height: 8.h),
+                    Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        "Yolo memberships cost ₹499 a year for access to the premium features.",
+                        style: TextStyle(
+                          color: AppColors.white,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 24.h),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          GinnieContainer(),
+                          SizedBox(width: 16.w),
+                          GiveAwayContainer(),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 40.h),
+                    CustomGradientButton(
+                      onPressed: null,
+                      text: "explore more",
+                    ),
+                    SizedBox(height: 70.h),
+                    Row(
+                      children: [
+                        Opacity(
+                          opacity: 0.5,
+                          child: Text(
+                            "Recent Transactions",
+                            style: TextStyle(
+                              color: AppColors.white,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                        Text(
+                          "view all",
+                          style: TextStyle(
+                            color: AppColors.red,
+                            decoration: TextDecoration.underline,
+                            decorationColor: AppColors.red,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 30.h),
+                    Row(
+                      children: [
+                        TransactionButton(
+                          isSpend: true,
+                          amount: '₹ 8,009',
+                          name: 'total spends',
+                        ),
+                        Spacer(),
+                        TransactionButton(
+                          isSpend: false,
+                          amount: '₹ 56,009',
+                          name: 'total credits',
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 32.h),
+                    ListView.separated(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return TransactionRow(
+                          amount: transactions[index].amount,
+                          spend: transactions[index].spend,
+                          title: transactions[index].title,
+                          image: transactions[index].image,
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: Divider(),
+                        );
+                      },
+                      itemCount: transactions.length,
+                    ),
+                    SizedBox(height: 40.h),
                   ],
                 ),
-                SizedBox(height: 30.h),
-                Row(
-                  children: [
-                    TransactionButton(
-                      isSpend: true,
-                      amount: '₹ 8,009',
-                      name: 'total spends',
-                    ),
-                    Spacer(),
-                    TransactionButton(
-                      isSpend: false,
-                      amount: '₹ 56,009',
-                      name: 'total credits',
-                    ),
-                  ],
-                ),
-                SizedBox(height: 32.h),
-                ListView.separated(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return TransactionRow(
-                      amount: transactions[index].amount,
-                      spend: transactions[index].spend,
-                      title: transactions[index].title,
-                      image: transactions[index].image,
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Divider(),
-                    );
-                  },
-                  itemCount: transactions.length,
-                ),
-                SizedBox(height: 30.h),
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
                 SvgPicture.asset(
                   'assets/images/svg/path.svg',
                   fit: BoxFit.cover,
@@ -326,10 +335,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ],
-                )
+                ),
               ],
-            ),
-          ),
+            )
+          ],
         ),
       ),
     );
